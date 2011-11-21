@@ -312,7 +312,7 @@ void do_memc_init(u32 base)
 	MEMC_W(base, DBPDNCNF, 0x01005398);	/* DBPDCNF */
 	/* (34) */
 	MEMC_W(base, DBRFCNF0, 0xc8);		/* 200cycle */
-	if (readw(MODEMR) & MD1) {
+	if (readl(MODEMR) & MD1) {
 		MEMC_W(base, DBRFCNF1, 0xdde);	/* 500MHz */
 	} else {
 		MEMC_W(base, DBRFCNF1, 0xaf0);	/* 375MHz */
