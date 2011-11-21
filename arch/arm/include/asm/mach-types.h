@@ -3312,6 +3312,7 @@ extern unsigned int __machine_arch_type;
 #define MACH_TYPE_T5388P               3336
 #define MACH_TYPE_DINGO                3337
 #define MACH_TYPE_GOFLEXHOME           3338
+#define MACH_TYPE_MARZEN               3790
 
 #ifdef CONFIG_ARCH_EBSA110
 # ifdef machine_arch_type
