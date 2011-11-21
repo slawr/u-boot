@@ -39,7 +39,7 @@
 
 /* autoboot */
 #define CONFIG_BOOTDELAY	3
-#define CONFIG_BOOTCOMMAND	"bootp; bootm"
+#define CONFIG_BOOTCOMMAND	"cp.l 0x00200000 0x60007fc0 0x100000; bootm 0x60007fc0"
 #define CONFIG_ZERO_BOOTDELAY_CHECK
 
 /* high level configuration options */
