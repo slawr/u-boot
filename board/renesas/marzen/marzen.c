@@ -76,8 +76,8 @@ void exbus_init(void)
 
 	/* pulse control */
 	/* (write) setup, hold, pulse, (read) setup, hold, pulse */
-	EXB_W(CSWCR1, 0x02190338);	/* 2, 1, 9, 3, 3, 8 */
-	EXB_W(ECSWCR0, 0x00280028);	/* 0, 2, 8, 0, 2, 8 */
+	EXB_W(CSWCR1, 0x02140326);	/* 2, 1, 4, 3, 2, 6 */
+	EXB_W(ECSWCR0, 0x01130114);	/* 1, 1, 3, 1, 1, 4 */
 	EXB_W(ECSWCR1, 0x077f077f);	/* 7, 7, 15, 7, 7, 15 */
 	EXB_W(ECSWCR2, 0x077f077f);	/* 7, 7, 15, 7, 7, 15 */
 
@@ -109,7 +109,7 @@ void exbus_init(void)
 
 static void exbus_late_init(void)
 {
-	EXB_W(CSWCR0, 0x02190338);	/* 2, 1, 9, 3, 3, 8 */
+	EXB_W(CSWCR0, 0x02140326);	/* 2, 1, 4, 3, 2, 6 */
 }
 
 static void uart_init(void)
