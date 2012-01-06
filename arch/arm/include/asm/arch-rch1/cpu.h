@@ -83,6 +83,17 @@ extern void wait_usec(int);
 #define		MD1	(1 << 1)
 #define		MD2	(1 << 2)
 
+#define WDT_BASE	0xffcc0000
+#define		WDTST		0x000
+#define		WDTCSR		0x004
+#define		WDTST		0x000
+
+#define	WDTST_CODE	0x5a000000
+
+#define	WDTCSR_CODE	0xa5000000
+#define	WDTCSR_WT	(WDTCSR_CODE | 0x40)
+#define	WDTCSR_TME	(WDTCSR_CODE | 0x80)
+
 /* dbsc */
 #define	MEMC_BASE	0xfe800000
 #define	MEMC2_BASE	0xfec00000

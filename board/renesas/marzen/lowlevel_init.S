@@ -28,6 +28,9 @@ lowlevel_init:
 	str	ip, [sp]
 	mov	ip, lr
 
+	/* initialize wdt */
+	bl	wdt_init
+
 	/* select pin */
 	bl	pin_init
 

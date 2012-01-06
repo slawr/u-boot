@@ -333,8 +333,16 @@ void memc_init(void)
 	do_memc_init(MEMC2_BASE);
 }
 
+void wdt_init(void)
+{
+	writel(WDTCSR_CODE, WDT_BASE + WDTCSR);
+}
+
 void board_reset(void)
 {
+	writel(WDTST_CODE | 0x1, WDT_BASE + WDTST);
+	writel(WDTCSR_WT, WDT_BASE + WDTCSR);
+	writel((WDTCSR_TME | WDTCSR_WT), WDT_BASE + WDTCSR);
 	while (1)
 		;
 }
