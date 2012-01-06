@@ -1,4 +1,8 @@
 /*
+ * drivers/serial/serial_sh.c
+ *
+ * Copyright (C) 2011-2012 Renesas Electronics Corporation
+ * 
  * SuperH SCIF device driver.
  * Copyright (C) 2007,2008,2010 Nobuhiro Iwamatsu
  * Copyright (C) 2002 - 2008  Paul Mundt

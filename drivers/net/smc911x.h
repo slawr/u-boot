@@ -1,4 +1,8 @@
 /*
+ * drivers/net/smc911x.h
+ *
+ * Copyright (C) 2011-2012 Renesas Electronics Corporation
+ * 
  * SMSC LAN9[12]1[567] Network driver
  *
  * (c) 2007 Pengutronix, Sascha Hauer <s.hauer@pengutronix.de>
