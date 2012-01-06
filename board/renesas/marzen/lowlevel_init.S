@@ -23,6 +23,28 @@
 
 	.globl lowlevel_init
 lowlevel_init:
+	mrc	p15, 0, r0, c0, c0, 5	@ Check of CPU ID #
+	ands	r0, r0, #0xf
+	beq	do_lowlevel_init	@ CPU ID #0
+	b	do_cpu_waiting		@ CPU ID #1-#3
+
+	.pool
+
+/*
+ * CPU ID #1-#3 come here
+ */
+	.align  4
+do_cpu_waiting:
+	wfi
+
+	b	do_cpu_waiting
+
+/*
+ * Only CPU ID #0 comes here
+ */
+	.align  4
+do_lowlevel_init:
+
 	ldr	r3, =0xfe798000
 	sub	sp, r3, #4
 	str	ip, [sp]
