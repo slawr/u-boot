@@ -209,7 +209,8 @@ void do_memc_init(u32 base)
 	/* (6) */
 	MEMC_W(base, DBKIND, 0x7);		/* ddr3-sdram */
 	/* (7) */
-	MEMC_W(base, DBCONF0, 0x0e030a02);	/* RowAd:14, Bank:8, CoulumAd:10 */
+	MEMC_W(base, DBCONF0, 0x0e030a02);	/* RowAd:14, Bank:8,
+						CoulumAd:10 */
 	MEMC_W(base, DBTR0, 0x7);		/* CL:7 */
 	MEMC_W(base, DBTR1, 0x6);		/* CWL:6 */
 	MEMC_W(base, DBTR2, 0);		/* AL:0 */
@@ -266,7 +267,8 @@ void do_memc_init(u32 base)
 	wait_usec(100);
 	/* (20) */
 	val = MEMC_R(base, DBPDCNT3);
-	MEMC_W(base, DBPDCNT3, val | 0x30000000);	/* STBY[1]:1, STBY[0]:1 */
+	MEMC_W(base, DBPDCNT3, val | 0x30000000);	/* STBY[1]:1,
+							STBY[0]:1 */
 	/* (21) */
 	val = MEMC_R(base, DBPDCNT0);
 	MEMC_W(base, DBPDCNT0, val | 0x80000000);	/* BW32:1 */
@@ -297,8 +299,8 @@ void do_memc_init(u32 base)
 	MEMC_W(base, DBCMD, 0x29000000);	/* MR1, AL:0, DLL:En, ODT=Dis,
 						ODS:40ohm */
 	/* (31) */
-	MEMC_W(base, DBCMD, 0x28000930);	/* MR0, Na, DLL_RES, BL:8, BT:Seque,
-						CL:7, WR:8 */
+	MEMC_W(base, DBCMD, 0x28000930);	/* MR0, Na, DLL_RES, BL:8,
+						BT:Seque, CL:7, WR:8 */
 	/* (32) */
 	MEMC_W(base, DBCMD, 0x03000200);	/* ZQCL, 512 */
 
@@ -311,11 +313,11 @@ void do_memc_init(u32 base)
 	MEMC_W(base, DBPDNCNF, 0x01005398);	/* DBPDCNF */
 	/* (34) */
 	MEMC_W(base, DBRFCNF0, 0xc8);		/* 200cycle */
-	if (readl(MODEMR) & MD1) {
+	if (readl(MODEMR) & MD1)
 		MEMC_W(base, DBRFCNF1, 0xdde);	/* 500MHz */
-	} else {
+	else
 		MEMC_W(base, DBRFCNF1, 0xaf0);	/* 375MHz */
-	}
+
 	MEMC_W(base, DBRFCNF2, 0);		/* REFINT:1/1 */
 	/* (35) */
 	MEMC_W(base, DBRFEN, 1);		/* DBRFEN. ARFEN */
