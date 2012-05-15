@@ -279,6 +279,18 @@ void do_memc_init(u32 base)
 	MEMC_W(base, DBPDCNT1, 0);		/* Drive:40ohm */
 	MEMC_W(base, DBPDCNT2, 0);		/* initial value */
 
+#ifdef CONFIG_DDR_DQS_EXTENSION
+	/* Extend a period of recieving Data Strobe from DRAM */
+	MEMC_W(base, 0x280, 0x0000a55a);
+	MEMC_W(base, 0x290, 0x00000000);
+	MEMC_W(base, 0x2a0, 0xa5390000);
+	MEMC_W(base, 0x290, 0x00000022);
+	MEMC_W(base, 0x2a0, 0x00481846);
+	MEMC_W(base, 0x290, 0x00000023);
+	MEMC_W(base, 0x2a0, 0x00481546);
+	MEMC_W(base, 0x280, 0x00000000);
+#endif /* CONFIG_DDR_DQS_EXTENSION */
+
 	/* ddr3-sdram setting */
 	/* (24) */
 	MEMC_W(base, DBCMD, 0x0000c350);	/* Wait, 100us */

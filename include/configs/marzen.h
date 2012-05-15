@@ -49,6 +49,9 @@
 /* keep l2 cache disabled */
 #define	CONFIG_L2_OFF	1
 
+/* ddr configuration */
+#define	CONFIG_DDR_DQS_EXTENSION
+
 /* ram memory map */
 #define	CONFIG_NR_DRAM_BANKS	1
 #define	CONFIG_SYS_SDRAM_BASE	0x60000000
