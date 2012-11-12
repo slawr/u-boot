@@ -111,18 +111,23 @@ static void exbus_late_init(void)
 	EXB_W(CSWCR0, 0x02140326);	/* 2, 1, 4, 3, 2, 6 */
 }
 
-static void uart_init(void)
+static void uart_init(unsigned int scif_base)
 {
 	writew(CONFIG_SYS_CLK_FREQ / CONFIG_BAUDRATE / 16,
-			SCIF_BASE + SCIF_DL);
-	writew(CKS_EXTERNAL, SCIF_BASE + SCIF_CKS);
+			scif_base + SCIF_DL);
+	writew(CKS_EXTERNAL, scif_base + SCIF_CKS);
 	wait_usec((1000000 + (CONFIG_BAUDRATE - 1))
 			/ CONFIG_BAUDRATE);	/* one bit interval */
 }
 
 int board_early_init_f(void)
 {
-	uart_init();
+	uart_init(SCIF0_BASE);
+	uart_init(SCIF1_BASE);
+	uart_init(SCIF2_BASE);
+	uart_init(SCIF3_BASE);
+	uart_init(SCIF4_BASE);
+	uart_init(SCIF5_BASE);
 
 	return 0;
 }
