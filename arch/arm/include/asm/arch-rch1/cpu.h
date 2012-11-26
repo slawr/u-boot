@@ -139,6 +139,9 @@ extern void wait_usec(int);
 #define		DBPDCNT1	0x204
 #define		DBPDCNT2	0x208
 #define		DBPDCNT3	0x20c
+#define		DBPDLCK		0x280
+#define		DBPDRGA		0x290
+#define		DBPDRGD		0x2a0
 #define		DBBS0CNT0	0x300
 #define		DBBS0CNT1	0x304
 #define	MEMC_W(base, offset, val)	writel(val, (base) + (offset))

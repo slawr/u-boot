@@ -280,49 +280,61 @@ void do_memc_init(u32 base)
 
 #ifdef CONFIG_DDR_DQS_EXTENSION
 	/* Extend a period of recieving Data Strobe from DRAM */
-	MEMC_W(base, 0x280, 0x0000a55a);
-	MEMC_W(base, 0x290, 0x00000000);
-	MEMC_W(base, 0x2a0, 0xa5390000);
-	MEMC_W(base, 0x290, 0x00000022);
-	MEMC_W(base, 0x2a0, 0x00481846);
-	MEMC_W(base, 0x290, 0x00000023);
-	MEMC_W(base, 0x2a0, 0x00481546);
-	MEMC_W(base, 0x280, 0x00000000);
+	/* (23) */
+	MEMC_W(base, DBPDLCK, 0x0000a55a);
+	/* (24) */
+	MEMC_W(base, DBPDRGA, 0x00000000);
+	/* (25) */
+	MEMC_W(base, DBPDRGD, 0xa5390000);
+	/* (26) */
+	MEMC_W(base, DBPDRGA, 0x00000022);
+	/* (27) */
+	MEMC_W(base, DBPDRGD, 0x00481846);
+	/* (28) */
+	MEMC_W(base, DBPDRGA, 0x00000023);
+	/* (29) */
+	MEMC_W(base, DBPDRGD, 0x00481546);
+	/* (30) */
+	MEMC_W(base, DBPDRGA, 0x00000025);
+	/* (31) */
+	MEMC_W(base, DBPDRGD, 0x00017200);
+	/* (32) */
+	MEMC_W(base, DBPDLCK, 0x00000000);
 #endif /* CONFIG_DDR_DQS_EXTENSION */
 
 	/* ddr3-sdram setting */
-	/* (23) */
+	/* (33) */
 	MEMC_W(base, DBCMD, 0x0000c350);	/* Wait, 100us */
-	/* (24) */
+	/* (34) */
 	MEMC_W(base, DBCMD, 0x2100c350);	/* RstH, 100us */
-	/* (25) */
+	/* (35) */
 	MEMC_W(base, DBCMD, 0x0000c350);	/* Wait, 100us */
 	MEMC_W(base, DBCMD, 0x0000c350);	/* Wait, 100us */
 	MEMC_W(base, DBCMD, 0x0000c350);	/* Wait, 100us */
 	MEMC_W(base, DBCMD, 0x0000c350);	/* Wait, 100us */
-	/* (26) */
+	/* (36) */
 	MEMC_W(base, DBCMD, 0x11000055);	/* PDXt, 170ns */
-	/* (27) */
+	/* (37) */
 	MEMC_W(base, DBCMD, 0x2a000008);	/* MR2, CWL:6 */
-	/* (28) */
+	/* (38) */
 	MEMC_W(base, DBCMD, 0x2b000000);	/* MR3 */
-	/* (29) */
+	/* (39) */
 	MEMC_W(base, DBCMD, 0x29000000);	/* MR1, AL:0, DLL:En, ODT=Dis,
 						ODS:40ohm */
-	/* (30) */
+	/* (40) */
 	MEMC_W(base, DBCMD, 0x28000930);	/* MR0, Na, DLL_RES, BL:8,
 						BT:Seque, CL:7, WR:8 */
-	/* (31) */
+	/* (41) */
 	MEMC_W(base, DBCMD, 0x03000200);	/* ZQCL, 512 */
 
 	/* dbsc3 setting-2 */
-	/* (32) */
+	/* (42) */
 	MEMC_W(base, DBBS0CNT0, 0x00000000);	/* DBBS0CNT0 */
 	MEMC_W(base, DBBS0CNT1, 0x00000000);	/* DBBS0CNT1 */
 	MEMC_W(base, DBCALCNF, 0x01005398);	/* DBCALCNF */
 	MEMC_W(base, DBCALTR, 0x05dc05dc);	/* DBCALTR */
 	MEMC_W(base, DBPDNCNF, 0x00000200);	/* DBPDNCNF */
-	/* (33) */
+	/* (43) */
 	MEMC_W(base, DBRFCNF0, 0xc8);		/* 200cycle */
 	if (readl(MODEMR) & MD1)
 		MEMC_W(base, DBRFCNF1, 0xdde);	/* 500MHz */
@@ -330,12 +342,12 @@ void do_memc_init(u32 base)
 		MEMC_W(base, DBRFCNF1, 0xaf0);	/* 375MHz */
 
 	MEMC_W(base, DBRFCNF2, 0);		/* REFINT:1/1 */
-	/* (34) */
+	/* (44) */
 	MEMC_W(base, DBRFEN, 1);		/* DBRFEN. ARFEN */
 
-	/* (35) */
+	/* (45) */
 	MEMC_W(base, DBACEN, 1);		/* DBACEN. ACCEN */
-	/* (36) */
+	/* (46) */
 	MEMC_R(base, DBWAIT);			/* wait for done */
 }
 
