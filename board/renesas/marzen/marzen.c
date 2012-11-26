@@ -321,7 +321,7 @@ void do_memc_init(u32 base)
 	MEMC_W(base, DBBS0CNT1, 0x00000000);	/* DBBS0CNT1 */
 	MEMC_W(base, DBCALCNF, 0x01005398);	/* DBCALCNF */
 	MEMC_W(base, DBCALTR, 0x05dc05dc);	/* DBCALTR */
-	MEMC_W(base, DBPDNCNF, 0x01005398);	/* DBPDCNF */
+	MEMC_W(base, DBPDNCNF, 0x00000200);	/* DBPDNCNF */
 	/* (33) */
 	MEMC_W(base, DBRFCNF0, 0xc8);		/* 200cycle */
 	if (readl(MODEMR) & MD1)
